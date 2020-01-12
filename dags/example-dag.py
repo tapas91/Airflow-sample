@@ -3,7 +3,7 @@
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
-from plugins.utilites.my_functions import raise_servnow_inc
+from plugins.utilites.raise_incident import raise_servnow_inc
 from datetime import datetime, timedelta
 
 
@@ -33,3 +33,5 @@ t2 = BashOperator(
     task_id='print_date',
     bash_command='date',
     dag=dag)
+
+t1 >> t2
